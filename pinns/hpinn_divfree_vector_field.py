@@ -1,4 +1,3 @@
-﻿import argparse
 import os
 import numpy as np
 import torch
@@ -342,34 +341,19 @@ def train_hpinn_divfree(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="hPINN for divergence-free 2D vector field: f=[dg/dx2, -dg/dx1]"
-    )
-    parser.add_argument("--a", type=float, default=2.0)
-    parser.add_argument("--lb", type=float, default=-1.0)
-    parser.add_argument("--rb", type=float, default=1.0)
-    parser.add_argument("--n_train", type=int, default=12000)
-    parser.add_argument("--batch_size", type=int, default=1024)
-    parser.add_argument("--adam_epochs", type=int, default=3000)
-    parser.add_argument("--lbfgs_iters", type=int, default=300)
-    parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--n_eval", type=int, default=121)
-    parser.add_argument("--out_dir", type=str, default=None)
-    args = parser.parse_args()
-
     device = set_device()
     print("device:", device)
     train_hpinn_divfree(
-        a=args.a,
-        lb=args.lb,
-        rb=args.rb,
-        n_train=args.n_train,
-        batch_size=args.batch_size,
-        adam_epochs=args.adam_epochs,
-        lbfgs_iters=args.lbfgs_iters,
-        lr=args.lr,
-        n_eval=args.n_eval,
-        out_dir=args.out_dir,
+        a=2.0,
+        lb=-1.0,
+        rb=1.0,
+        n_train=12000,
+        batch_size=1024,
+        adam_epochs=3000,
+        lbfgs_iters=300,
+        lr=1e-3,
+        n_eval=121,
+        out_dir=None,
         device=device,
     )
 
