@@ -1,4 +1,3 @@
-﻿import argparse
 import os
 import numpy as np
 import torch
@@ -278,38 +277,22 @@ def train_spinn_stochastic_poisson_1d(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="sPINN for stochastic-parameter 1D Poisson equation")
-    parser.add_argument("--xi_lb", type=float, default=-1.0)
-    parser.add_argument("--xi_rb", type=float, default=1.0)
-    parser.add_argument("--x_lb", type=float, default=0.0)
-    parser.add_argument("--x_rb", type=float, default=1.0)
-    parser.add_argument("--n_f", type=int, default=6000)
-    parser.add_argument("--n_bc", type=int, default=800)
-    parser.add_argument("--adam_epochs", type=int, default=4000)
-    parser.add_argument("--lbfgs_iters", type=int, default=300)
-    parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--lambda_bc", type=float, default=20.0)
-    parser.add_argument("--hidden", type=int, default=96)
-    parser.add_argument("--n_layers", type=int, default=4)
-    parser.add_argument("--out_dir", type=str, default=None)
-    args = parser.parse_args()
-
     device = set_device()
     print("device:", device)
     train_spinn_stochastic_poisson_1d(
-        xi_lb=args.xi_lb,
-        xi_rb=args.xi_rb,
-        x_lb=args.x_lb,
-        x_rb=args.x_rb,
-        n_f=args.n_f,
-        n_bc=args.n_bc,
-        adam_epochs=args.adam_epochs,
-        lbfgs_iters=args.lbfgs_iters,
-        lr=args.lr,
-        lambda_bc=args.lambda_bc,
-        hidden=args.hidden,
-        n_layers=args.n_layers,
-        out_dir=args.out_dir,
+        xi_lb=-1.0,
+        xi_rb=1.0,
+        x_lb=0.0,
+        x_rb=1.0,
+        n_f=6000,
+        n_bc=800,
+        adam_epochs=4000,
+        lbfgs_iters=300,
+        lr=1e-3,
+        lambda_bc=20.0,
+        hidden=96,
+        n_layers=4,
+        out_dir=None,
         device=device,
     )
 
