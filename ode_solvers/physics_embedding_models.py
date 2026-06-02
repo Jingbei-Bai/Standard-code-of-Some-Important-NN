@@ -314,6 +314,6 @@ if __name__=='__main__':
     train_hamiltonian(device, out_dir)
     train_lagrangian(device, out_dir)
     train_poisson(device, out_dir)
-    train_generic(device, out_dir)
+    #train_generic(device, out_dir) which is hard to train
 
 
