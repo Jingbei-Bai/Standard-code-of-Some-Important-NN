@@ -1,4 +1,3 @@
-﻿import argparse
 import os
 import numpy as np
 import torch
@@ -220,34 +219,20 @@ def train_gpinn_poisson_1d(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="gPINN for 1D Poisson equation")
-    parser.add_argument("--x_lb", type=float, default=-1.0)
-    parser.add_argument("--x_rb", type=float, default=1.0)
-    parser.add_argument("--n_f", type=int, default=4000)
-    parser.add_argument("--adam_epochs", type=int, default=6000)
-    parser.add_argument("--lbfgs_iters", type=int, default=500)
-    parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--lambda_g", type=float, default=0.1, help="weight of residual-gradient term")
-    parser.add_argument("--lambda_bc", type=float, default=10.0, help="weight of boundary loss")
-    parser.add_argument("--hidden", type=int, default=64)
-    parser.add_argument("--n_layers", type=int, default=4)
-    parser.add_argument("--out_dir", type=str, default=None)
-    args = parser.parse_args()
-
     device = set_device()
     print("device:", device)
     train_gpinn_poisson_1d(
-        x_lb=args.x_lb,
-        x_rb=args.x_rb,
-        n_f=args.n_f,
-        adam_epochs=args.adam_epochs,
-        lbfgs_iters=args.lbfgs_iters,
-        lr=args.lr,
-        lambda_g=args.lambda_g,
-        lambda_bc=args.lambda_bc,
-        hidden=args.hidden,
-        n_layers=args.n_layers,
-        out_dir=args.out_dir,
+        x_lb=-1.0,
+        x_rb=1.0,
+        n_f=4000,
+        adam_epochs=6000,
+        lbfgs_iters=500,
+        lr=1e-3,
+        lambda_g=0.1,
+        lambda_bc=10.0,
+        hidden=64,
+        n_layers=4,
+        out_dir=None,
         device=device,
     )
 
