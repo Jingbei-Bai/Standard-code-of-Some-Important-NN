@@ -1,4 +1,3 @@
-﻿import argparse
 import math
 import os
 import numpy as np
@@ -361,50 +360,27 @@ def train_fpinn_time_fractional_diffusion_1d(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="fPINN for 1D time-fractional diffusion equation (Caputo in time)"
-    )
-    parser.add_argument("--alpha", type=float, default=0.6, help="fractional order in (0,1)")
-    parser.add_argument("--beta", type=float, default=2.0, help="exact-solution time exponent (>alpha)")
-    parser.add_argument("--x_lb", type=float, default=0.0)
-    parser.add_argument("--x_rb", type=float, default=1.0)
-    parser.add_argument("--t_lb", type=float, default=0.0)
-    parser.add_argument("--t_rb", type=float, default=1.0)
-    parser.add_argument("--n_time_steps", type=int, default=25, help="time grid count for L1 Caputo")
-    parser.add_argument("--n_f_per_t", type=int, default=64, help="PDE collocation samples per time level")
-    parser.add_argument("--n_ic", type=int, default=256)
-    parser.add_argument("--n_bc", type=int, default=256)
-    parser.add_argument("--adam_epochs", type=int, default=3000)
-    parser.add_argument("--lbfgs_iters", type=int, default=300)
-    parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--lambda_ic", type=float, default=10.0)
-    parser.add_argument("--lambda_bc", type=float, default=10.0)
-    parser.add_argument("--hidden", type=int, default=96)
-    parser.add_argument("--n_layers", type=int, default=4)
-    parser.add_argument("--out_dir", type=str, default=None)
-    args = parser.parse_args()
-
     device = set_device()
     print("device:", device)
     train_fpinn_time_fractional_diffusion_1d(
-        alpha=args.alpha,
-        beta=args.beta,
-        x_lb=args.x_lb,
-        x_rb=args.x_rb,
-        t_lb=args.t_lb,
-        t_rb=args.t_rb,
-        n_time_steps=args.n_time_steps,
-        n_f_per_t=args.n_f_per_t,
-        n_ic=args.n_ic,
-        n_bc=args.n_bc,
-        adam_epochs=args.adam_epochs,
-        lbfgs_iters=args.lbfgs_iters,
-        lr=args.lr,
-        lambda_ic=args.lambda_ic,
-        lambda_bc=args.lambda_bc,
-        hidden=args.hidden,
-        n_layers=args.n_layers,
-        out_dir=args.out_dir,
+        alpha=0.6,
+        beta=2.0,
+        x_lb=0.0,
+        x_rb=1.0,
+        t_lb=0.0,
+        t_rb=1.0,
+        n_time_steps=25,
+        n_f_per_t=64,
+        n_ic=256,
+        n_bc=256,
+        adam_epochs=3000,
+        lbfgs_iters=300,
+        lr=1e-3,
+        lambda_ic=10.0,
+        lambda_bc=10.0,
+        hidden=96,
+        n_layers=4,
+        out_dir=None,
         device=device,
     )
 
